@@ -81,9 +81,10 @@ function PinnedDocuments({
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
+      // Activate on movement rather than on hold time, so a press that does not
+      // move remains a click however long the button is held.
       activationConstraint: {
-        delay: 100,
-        tolerance: 5,
+        distance: 5,
       },
     }),
     useSensor(KeyboardSensor, {
